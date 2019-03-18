@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS Github Issues</title>
+
+    <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
+    <meta name="viewport"               content="width=device-width">
+
+    <link href="app.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body id="home" ng-app="app">
+
+    <div class="application" ng-controller="IssueController">
+      <div id="top" class="row-fluid">
+        <h1>LB Assessment Part 2</h1>
+
+      </div>
+
+      <div id="left" class="left" ng-show="repos.data.length">
+
+        <div id="search_box">
+          <input ng-model="search" type="text" placeholder="Search projects..." />
+        </div>
+
+        <ul class="tabs">
+          <li class="active">
+            <h5>
+              <a>Repositories ({{ repos.data.length }})</a>
+            </h5>
+          </li>
+        </ul>
+
+        <ul id="repos" class="repos">
+          <li ng-repeat="item in repos.data | filter:search | orderBy:'-open_issues'" ng-class="{true:'selected', false:''}[item == repo]" ng-click="selectRepo(item)">
+
+            <div class="slug-and-status">
+              <span class="status"></span>
+              <a href="#" class="slug">{{ item.name }}</a>
+            </div>
+
+            <span class="last_build" ng-show="item.open_issues">
+              {{ item.open_issues }}
+            </span>
+
+            <p class="summary">
+              {{ item.description }}
+            </p>
+
+            <div class="indicator"><span></span></div>
+
+          </li>
+        </ul>
+
+      </div>
+
+      <div id="main" ng-show="repo">
+        <div id="repo">
+
+          <h3>{{ repo.full_name }}</h3>
+
+          <p class="description">
+            {{ repo.description }}
+          </p>
+
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active">
+      <input type="search" ng-model="search" class="form-control input-sm search-form" placeholder="Filter">
+    </li>
+  </ul>
+
+          <ul class="tabs" ng-show="issues.data.length">
+            <li class="active">
+              <h5>
+                <a>Issues</a>
+              </h5>
+            </li>
+          </ul>
+
+<div class="card-columns" ng-show="issues.data.length">
+  <div class="card text-white p-3" ng-repeat="item in issues.data | filter:search" ng-if="{{ !item.pull_request }}">
+    <div class="card-header"><a href="{{ item.url }}"><p class="highlight">#{{ item.number }}:</p><h5> {{ item.title }}</h5></a></div>
+    <img class="card-img-top" src="{{ item.assignee.avatar_url }}" alt="{{ assignee.login }}">
+    <div class="card-body">
+
+      <p class="card-text highlight">{{ item.body | limitTo:10 }}</p>
+      <p class="card-text"><small class="text-muted"> created at: {{ item.created_at | date:'short' }}</small></p>
+      <p class="card-text"><small class="text-muted">User: {{ item.user.login }}</small></p>
+      <p class="card-text"><small class="text-muted">Assignee: {{ item.assignee.login }}</small></p>
+
+    </div>
+  </div>
+
+</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script src="../lib/js/angular.min.js"></script>
+    <script src="../lib/js/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>

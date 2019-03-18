@@ -1,0 +1,88 @@
+@import "../lib/css/travis.css";
+a {
+  color: #666 !important;
+}
+h5 {
+  margin-top: -12px;
+}
+p.highlight {
+  color: #C8C8C8 !important;
+}
+.application {
+  background-color: #303030 !important;
+}
+.card {
+  background-color: #303030 !important;
+}
+.card:hover {opacity: 1 !important;}
+#top {
+  background: #00aeef;
+}
+#top h1         { text-indent: 0; background: none; width: auto; margin: auto 20px; font-weight: 100; font-size: 150%; color: #fff; }
+#navigation li  { line-height: 40px; }
+div .indicator {
+  background-color: #1f1f1f !important;
+}
+#right {
+  background-color: #1f1f1f !important;
+}
+#search_box input {
+  background: #999;
+}
+div #search_box {
+  background-color: #1f1f1f !important;
+}
+.tabs {
+  border-bottom: #303030 !important;
+}
+.tabs h5 a {
+  color: #00aeef;
+}
+#left .tabs {
+  background-color: #1f1f1f !important;
+  border-bottom: none;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+.left {
+  background-color: #1f1f1f !important;
+}
+#repos.repos {
+  border-color: #1f1f1f !important;
+}
+div {
+  border-color: #1f1f1f !important;
+}
+li {
+  background-color: #303030 !important;
+  border-color: #1f1f1f !important;
+}
+#main {
+  background-color: #303030 !important;
+}
+tbody {
+  background-color: #303030 !important;
+  border-radius: 50%;
+}
+table.list tr {
+  max-height: 100px;
+}
+table.list td {
+  background-color: #303030 !important;
+  color: #999;
+  border-bottom: none;
+}
+table.list th {
+  border-bottom: none;
+}
+a {
+  color: #666;
+}
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
